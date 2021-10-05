@@ -1,0 +1,72 @@
+<% layout("layouts/boilerplate") %>
+<div class="container d-flex justify-content-center align-items-center my-5">
+    <div class="row">
+        <div class="col-md-6 col-xl-4 offset-md-2">
+            <div class="card shadow" style="width: 25rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Edit Campground</h5>
+                    <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST"
+                        novalidate class="validated-form" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label class="form-label" for="title">Campground Title</label>
+                            <input class="form-control" type="text" id="title"
+                                name="campground[title]" value="<%= campground.title %>" required
+                                autofocus>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="location">Campground Location</label>
+                            <input class="form-control" type="text" id="location"
+                                name="campground[location]" value="<%= campground.location %>"
+                                required>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="price">Price</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="price-label">$</span>
+                                <input type="text" class="form-control" placeholder="0.00"
+                                    aria-label="Price" id="price" aria-describedby="price-label"
+                                    name="campground[price]" value="<%= campground.price %>"
+                                    required>
+                                <div class="valid-feedback">Looks good!</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="description">Description</label>
+                            <textarea class="form-control" type="text" id="description"
+                                name="campground[description]" required>
+                        <%= campground.description %>
+                    </textarea>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Add more image(s)</label>
+                            <input class="form-control" type="file" id="image" name="image"
+                                multiple>
+                        </div>
+                        <div class="mb-3">
+                            <% campground.images.forEach((img, i)=> { %>
+                            <img src="<%=img.thumbnail%>" class="img-thumbnail card-img-bottom"
+                                alt="">
+                            <div class="form-check-inline">
+                                <input type="checkbox" name="deleteImages[]"
+                                    value="<%=img.filename%>" id="image-<%=i%>">
+                                <label for="image-<%=i%>">Delete</label>
+                            </div>
+                            <% }) %>
+                        </div>
+                        <div class="mb-3 d-grid gap-2">
+                            <button class="btn btn-success">Update Campground</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <a class="btn btn-primary my-3" href="/campgrounds/<%=campground._id%>">Back to
+                Campground</a>
+        </footer>
+    </div>
+</div>
