@@ -49,9 +49,9 @@ const store = new MongoStore({
   touchAfter: 24 * 60 * 60, //in seconds
 });
 
-// store.on("error", function (e) {
-//   console.log("SESSION STORE ERROR");
-// });
+store.on("error", function (e) {
+  console.log("SESSION STORE ERROR");
+});
 
 const sessionConfig = {
   store,
