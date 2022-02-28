@@ -7,3 +7,5 @@ YelpCamp is a website to create and review campgrounds. Preview available at htt
 ## Stack
 YelpCamp uses MongoDB for the database and Node.js for the backend. Embedded Javascript (EJS) is used for templating the UI, Bootstrap is used for styling, and the Express.js framework is used for the REST API.
 YelpCamp implements authentication with bcrypt password hashing, a REST API with CRUD functionality, middleware, and cookies.
+
+This project was completed as the final project for "The Web Developer Bootcamp" taught by Colt Steele on Udemy.
